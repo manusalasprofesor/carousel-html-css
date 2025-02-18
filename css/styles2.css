@@ -1,0 +1,120 @@
+:root {
+    --color-bg: #16181b;
+  }
+  
+  body {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0 50px;
+    background: var(--color-bg);
+  }
+  
+  * {
+    box-sizing: border-box;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  *::-webkit-scrollbar {
+    display: none;
+  }
+  
+  ol, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .carousel {
+    position: relative;
+    width: 100%;
+    height: 50vw;
+    perspective: 100px;
+    overflow: hidden;
+    cursor: grab;
+  }
+  
+.carousel ol {
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    counter-reset: item;
+    position: absolute;
+    inset: 0;
+  }
+  
+.carousel::before, .carousel::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500%;
+    height: 500%;
+    border-radius: 50%;
+    background: var(--color-bg);
+  }
+  
+.carousel::before { top: -480%; }
+.carousel::after { bottom: -480%; }
+  
+.carousel ol li {
+    flex: 0 0 calc(100% / 3); /* el número es el número de diapositivas que queremos que se vean*/
+    width: calc(100% / 3);
+    position: relative;
+    counter-increment: item;
+  }
+  
+.carousel ol li::before {
+    content: counter(item);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%) translateZ(70px);
+  }
+  
+.carousel ol li div {
+    position: absolute;
+    inset: 0;
+    scroll-snap-align: center;
+    background-size: cover;
+    background-position: center;
+    border: 10px solid var(--color-bg);
+}
+
+
+/* Carga de imágenes */
+.carousel ol li:first-child div{
+    background-image: url('../img-2/imagen1.jpg');
+}
+
+.carousel ol li:nth-child(2) div{
+    background-image: url('../img-2/imagen2.jpg');
+}
+
+.carousel ol li:nth-child(3) div{
+    background-image: url('../img-2/imagen3.jpg');
+}
+
+.carousel ol li:nth-child(4) div{
+    background-image: url('../img-2/imagen4.jpg');
+}
+
+.carousel ol li:nth-child(5) div{
+    background-image: url('../img-2/imagen5.jpg');
+}
+
+.carousel ol li:nth-child(6) div{
+    background-image: url('../img-2/imagen6.jpg');
+}
+
+.carousel ol li:nth-child(7) div{
+  background-image: url('../img-2/imagen7.jpg');
+}
+
+.carousel ol li:last-child div{
+    background-image: url('../img-2/imagen8.jpg');
+}
